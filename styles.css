@@ -1,0 +1,24 @@
+* {
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    display: block;
+    color: white;
+    background-color: gray;
+}
+
+.lists {
+    display: block;
+    margin: auto;
+    background-color: lightgray;
+}
+
+.list-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    background-color: gray;
+    padding: 5px;
+}
