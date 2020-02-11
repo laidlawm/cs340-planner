@@ -4,79 +4,157 @@
         <meta charset="utf-8">
         <title>Planner</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="index.js" charset="utf-8" defer></script>
     </head>
     <body>
         <header><h1>Planner</h1></header>
-        <div class="menu">
-            <ul>
-                <li><p>Current Board: School-Work</p></li>
-                <li><a href="boards.html">Back To Boards</a></li>
-            </ul>
-        </div>
+        <span id="add-board-btn" class="close">&plus;</span>
+        <h3>(NEW BOARD)</h3><br>
         <div class="lists">
+            <span class="remove-board-btn close">&times;</span>
+            <h2>School Work</h2>
+            <div class="list-wrapper list-add">
+                <span class="add-list-btn close">&plus;</span>
+                <h3 class="list-title">(NEW LIST)</h3>
+            </div>
             <div class="list-wrapper">
+                <span class="delete-list close">&times;</span>
                 <h2 class="list-title">TO-DO</h2>
                 <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
                     <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                    <div class="card-wrapper">
+                        <span class="delete-card close">&times;</span>
+                        <h3 class="card-title">Algorithms homework</h3>
+                        <p class="card-content">Homework 3</p>
                     </div>
                 </div>
             </div>
             <div class="list-wrapper">
+                <span class="delete-list close">&times;</span>
                 <h2 class="list-title">DOING</h2>
                 <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
                     <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                    <div class="card-wrapper">
+                        <span class="delete-card close">&times;</span>
+                        <h3 class="card-title">Networks midterm prep</h3>
+                        <p class="card-content">Tues</p>
                     </div>
                 </div>
             </div>
             <div class="list-wrapper">
-                <h2 class="list-title">DONE</h2>
+                <span class="delete-list close">&times;</span>
+                <h2 class="list-title">DOING</h2>
                 <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
                     <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                    <div class="card-wrapper">
+                        <span class="delete-card close">&times;</span>
+                        <h3 class="card-title">Databases assignment</h3>
+                        <p class="card-content">Project step 3</p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="lists">
+            <span class="remove-board-btn close">&times;</span>
+            <h2>Daily Chores</h2>
             <div class="list-wrapper list-add">
-                <h2 class="list-title"><button>New List (+)</button></h2>
+                <span class="add-list-btn close">&plus;</span>
+                <h3 class="list-title">(NEW LIST)</h3>
+            </div>
+            <div class="list-wrapper">
+                <span class="delete-list close">&times;</span>
+                <h2 class="list-title">MON</h2>
+                <div class="list-body">
+                    <div class="card-wrapper card-add">
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                    <div class="card-wrapper">
+                        <span class="delete-card close">&times;</span>
+                        <h3 class="card-title">Clean kitchen</h3>
+                        <p class="card-content">sweep, clean counter, etc...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <span class="delete-list close">&times;</span>
+                <h2 class="list-title">TUES</h2>
+                <div class="list-body">
+                    <div class="card-wrapper card-add">
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <span class="delete-list close">&times;</span>
+                <h2 class="list-title">WED</h2>
+                <div class="list-body">
+                    <div class="card-wrapper card-add">
+                        <span class="add-card-btn close">&plus;</span>
+                        <h3 class="card-title">(NEW CARD)</h3>
+                    </div>
+                    <div class="card-wrapper">
+                        <span class="delete-card close">&times;</span>
+                        <h3 class="card-title">Take trash out to curb</h3>
+                        <p class="card-content"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
+
+    <div id="add-list-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span id="close-list-modal" class="close">&times;</span>
+            <h2>New List</h2>
+          </div>
+          <div class="modal-body">
+            <p>New List Title</p>
+            <input type="text" id="new-list-title"></input>
+            <button id="new-list-submit">Submit</button>
+          </div>
+        </div>
+    </div>
+
+    <div id="add-card-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span id="close-card-modal" class="close">&times;</span>
+            <h2>New Card</h2>
+          </div>
+          <div class="modal-body">
+            <p>New Card Title</p>
+            <input type="text" id="new-card-title"></input>
+            <p>New Card Description</p>
+            <input type="text" id="new-card-desc"></input>
+            <button id="new-card-submit">Submit</button>
+          </div>
+        </div>
+    </div>
+
+    <div id="add-board-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span id="close-board-modal" class="close">&times;</span>
+            <h2>New Board</h2>
+          </div>
+          <div class="modal-body">
+            <p>New Board Title</p>
+            <input type="text" id="new-board-title"></input>
+            <button id="new-board-submit">Submit</button>
+          </div>
+        </div>
+    </div>
+
 </html>
