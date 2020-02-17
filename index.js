@@ -1,221 +1,269 @@
-var currentList;
-var currentBoard;
+/* ***************** */
+/* ----- MAIN ------ */
+/* ***************** */
 
-var addListModal = document.getElementById("add-list-modal");
-var addListBtn = document.getElementsByClassName("add-list-btn");
-var exitList = document.getElementById("close-list-modal");
-for (i = 0; i < addListBtn.length; i++) {
-    addListBtn[i].onclick = function() {
-        addListModal.style.display = "block";
-        currentBoard = this.parentElement.parentElement;
-    }
-}
-exitList.onclick = function() {
-  addListModal.style.display = "none";
-  document.getElementById("new-list-title").value="";
-}
+// Register handlebars template functions
+Handlebars.registerPartial("addCardTemplate", "addCardTemplate");
+Handlebars.registerPartial("addLabelTemplate", "addLabelTemplate");
+Handlebars.registerPartial("addListTemplate", "addListTemplate");
+Handlebars.registerPartial("boardModalTemplate", "boardModalTemplate");
+Handlebars.registerPartial("cardModalTemplate", "cardModalTemplate");
+Handlebars.registerPartial("labelModalTemplate", "labelModalTemplate");
+Handlebars.registerPartial("labelsTemplate", "labelsTemplate");
+Handlebars.registerPartial("listModalTemplate", "listModalTemplate");
+Handlebars.registerPartial("modalLabelsTemplate", "modalLabelsTemplate");
 
+// Display main content
+var mainHTML = Handlebars.templates.main();
+document.head.insertAdjacentHTML("afterend", mainHTML);
 
-var addCardModal = document.getElementById("add-card-modal");
-var addCardBtns= document.getElementsByClassName("add-card-btn");
-var exitCard = document.getElementById("close-card-modal");
-for (i = 0; i < addCardBtns.length; i++) {
-    addCardBtns[i].onclick = function() {
-        addCardModal.style.display = "block";
-        currentList = this.parentElement.parentElement;
-    }
-}
-exitCard.onclick = function() {
-    addCardModal.style.display = "none";
-    document.getElementById("new-card-title").value="";
-    document.getElementById("new-card-desc").value="";
-}
+var addBtns, deleteBtns, closeBtns;
+var parentBoard, parentList;
 
-// Board modal
+// Register modals
 var addBoardModal = document.getElementById("add-board-modal");
-var addBoardBtn = document.getElementById("add-board-btn");
-var exitBoardModal = document.getElementById("close-board-modal");
-addBoardBtn.onclick = function() {
-    addBoardModal.style.display = "block";
-}
-exitBoardModal.onclick = function() {
+var addListModal = document.getElementById("add-list-modal");
+var addCardModal = document.getElementById("add-card-modal");
+var addLabelModal = document.getElementById("add-label-modal");
+
+// Register modal close buttons
+var closeBoardModal = document.getElementById("close-board-modal");
+var closeListModal = document.getElementById("close-list-modal");
+var closeCardModal = document.getElementById("close-card-modal");
+var closeLabelModal = document.getElementById("close-label-modal");
+
+// Attach correct functionality to each modal close button
+closeBoardModal.onclick = function() {
     addBoardModal.style.display = "none";
     document.getElementById("new-board-title").value="";
 }
-
-window.onclick = function(event) {
-  if (event.target == addListModal) {
+closeListModal.onclick = function() {
     addListModal.style.display = "none";
     document.getElementById("new-list-title").value="";
-  }
-  else if (event.target == addCardModal) {
-      addCardModal.style.display = "none";
-      document.getElementById("new-card-title").value="";
-      document.getElementById("new-card-desc").value="";
-  }
-  else if (event.target == addBoardModal) {
-      addBoardModal.style.display = "none";
-      document.getElementById("new-board-title").value="";
-  }
+    // TODO: Uncheck all checked boxes
 }
-
-var removeListBtns = document.getElementsByClassName("delete-list");
-for (i = 0; i < removeListBtns.length; i++) {
-    removeListBtns[i].onclick = function() {
-        this.parentElement.remove();
-    }
-}
-
-var removeCardBtns = document.getElementsByClassName("delete-card");
-for (i = 0; i < removeCardBtns.length; i++) {
-    removeCardBtns[i].onclick = function() {
-        this.parentElement.remove();
-    }
-}
-
-//var lists = document.getElementsByClassName("lists")[0];
-var submitList = document.getElementById("new-list-submit");
-submitList.onclick = addList
-function addList() {
-
-    var newList = document.createElement("div");
-    newList.classList.add("list-wrapper");
-
-    var newSpan = document.createElement("span");
-    newSpan.classList.add("delete-list", "close");
-    newSpan.innerHTML = "&times;";
-    newSpan.onclick = function() {
-        this.parentElement.remove();
-    }
-
-    var newH2 = document.createElement("h2");
-    newH2.classList.add("list-title");
-    newH2.innerHTML = document.getElementById("new-list-title").value;
-
-    var newListBody = document.createElement("div");
-    newListBody.classList.add("list-body");
-
-    var newCardAdd = document.createElement("div");
-    newCardAdd.classList.add("card-wrapper", "card-add");
-
-    var newCardAddBtn = document.createElement("span");
-    newCardAddBtn.classList.add("add-card-btn", "close");
-    newCardAddBtn.innerHTML = "&plus;";
-    newCardAddBtn.onclick = function() {
-        addCardModal.style.display = "block";
-        currentList = this.parentElement.parentElement;
-    }
-
-    var newH3 = document.createElement("h3");
-    newH3.classList.add("card-title");
-    newH3.appendChild(document.createTextNode("(NEW CARD)"));
-
-    newCardAdd.appendChild(newCardAddBtn);
-    newCardAdd.appendChild(newH3);
-    newListBody.appendChild(newCardAdd);
-    newList.appendChild(newSpan);
-    newList.appendChild(newH2);
-    newList.appendChild(newListBody);
-
-    currentBoard.appendChild(newList);
-
-    addListModal.style.display = "none";
-    document.getElementById("new-list-title").value="";
-}
-
-var submitCard = document.getElementById("new-card-submit");
-submitCard.onclick = createCard;
-function createCard() {
-
-    var card = document.createElement("div");
-    card.classList.add("card-wrapper");
-
-    var span = document.createElement("span");
-    span.classList.add("delete-card", "close");
-    span.innerHTML = "&times;";
-    span.onclick = function() {
-        this.parentElement.remove();
-    }
-
-    var h3 = document.createElement("h3");
-    h3.classList.add("card-title");
-    h3.innerHTML = document.getElementById("new-card-title").value;
-
-    var p = document.createElement("p");
-    p.classList.add("card-content");
-    p.innerHTML = document.getElementById("new-card-desc").value;
-
-    card.appendChild(span);
-    card.appendChild(h3);
-    card.appendChild(p);
-
-    currentList.appendChild(card);
-
+closeCardModal.onclick = function() {
     addCardModal.style.display = "none";
     document.getElementById("new-card-title").value="";
     document.getElementById("new-card-desc").value="";
-
+    // TODO: Uncheck all checked boxes
+}
+closeLabelModal.onclick = function() {
+    addLabelModal.style.display = "none";
+    document.getElementById("new-label-title").value="";
 }
 
-// Remove board
-function removeBoard() {
-    this.parentElement.remove();
+// Handle clicking on window when a modal is open
+window.onclick = function(event) {
+    if (event.target == addBoardModal) {
+        addBoardModal.style.display = "none";
+        document.getElementById("new-board-title").value="";
+    }
+    else if (event.target == addListModal) {
+        addListModal.style.display = "none";
+        document.getElementById("new-list-title").value="";
+        // TODO: Uncheck all checked boxes
+    }
+    else if (event.target == addCardModal) {
+        addCardModal.style.display = "none";
+        document.getElementById("new-card-title").value="";
+        document.getElementById("new-card-desc").value="";
+        // TODO: Uncheck all checked boxes
+    }
+    else if (event.target == addLabelModal) {
+        addLabelModal.style.display = "none";
+        document.getElementById("new-label-title").value="";
+    }
 }
-var removeBoardBtn = document.getElementsByClassName("remove-board-btn");
-for (i = 0; i < removeBoardBtn.length; i++) {
-    removeBoardBtn[i].onclick = removeBoard;
+
+// Register modal submit buttons
+var submitBoardBtn = document.getElementById("submit-board-btn");
+submitBoardBtn.onclick = submitBoard;
+var submitListBtn = document.getElementById("submit-list-btn");
+submitListBtn.onclick = submitList;
+var submitCardBtn = document.getElementById("submit-card-btn");
+submitCardBtn.onclick = submitCard;
+var submitLabelBtn = document.getElementById("submit-label-btn");
+submitLabelBtn.onclick = submitLabel;
+
+// Stores created labels
+var labels = {};
+updateLabels();
+
+nextBID = 0;
+nextLID = 0;
+nextCID = 0;
+nextLabelID = 0;
+updateBtns(); // Initial button update for any hard coded elements
+
+// Insert placeholder values
+insertBoard("bid-0", "School Work");
+insertBoard("bid-1", "Daily Chores");
+insertList("lid-0", "TO-DO", "Label", "bid-0");
+insertList("lid-1", "DOING", "Label", "bid-0");
+insertList("lid-2", "DONE", "Label", "bid-0");
+insertList("lid-3", "MONDAY", "Label", "bid-1");
+insertList("lid-4", "TUESDAY", "Label", "bid-1");
+insertList("lid-5", "WEDNESDAY", "Label", "bid-1");
+insertCard("cid-0", "Project Step 3 Final ", {"labelid-blank": ""}, "Turn in project step 3 final", "lid-0");
+
+
+/* ****************** */
+/* ----- BOARD ------ */
+/* ****************** */
+
+function submitBoard() {
+    var bid = "bid-" + nextBID; // Dynamically create bid
+    var board_title = document.getElementById("new-board-title").value;
+    addBoardModal.style.display = "none";
+    insertBoard(bid, board_title);
 }
 
-// Add board
-var submitBoardBtn = document.getElementById("new-board-submit");
-submitBoardBtn.onclick = function() {
+function insertBoard(bid, board_title) {
+    var boardContext = {
+        bid: bid,
+        board_title: board_title
+    }
+    var boardHTML = Handlebars.templates.board(boardContext);
+    document.getElementById("add-board-btn").parentElement.insertAdjacentHTML('beforebegin', boardHTML);
+    updateBtns();
+    nextBID++;
+}
 
-    var board = document.createElement("div");
-    board.classList.add("lists");
+/* ***************** */
+/* ----- LIST ------ */
+/* ***************** */
 
-    var span = document.createElement("span");
-    span.classList.add("remove-board-btn", "close");
-    span.innerHTML = "&times;";
-    span.onclick = removeBoard;
+function submitList() {
+    var lid = "lid-" + nextLID; // Dynamically create lid
+    var list_title = document.getElementById("new-list-title").value;
+    // var list_label = document.getElementById("new-list-label").value;
+    var checkboxes = document.querySelectorAll("input[type=checkbox]");
+    selectedCboxes = Array.prototype.slice.call(checkboxes).filter(ch => ch.checked==true);
+    var list_label = [];
+    for (i = 0; i < selectedCboxes.length; i++) {
+        list_label[i] = selectedCboxes[i].value;
+    }
+    var parent_bid = parentBoard.getAttribute("data-bid");
+    addListModal.style.display = "none";
+    insertList(lid, list_title, list_label, parent_bid);
+}
 
-    var h2 = document.createElement("h3");
-    h2.innerHTML = document.getElementById("new-board-title").value;
+function insertList(lid, list_title, list_label, parent_bid) {
+    var listContext = {
+        lid: lid,
+        list_title: list_title,
+        list_label: list_label
+    }
+    var listHTML = Handlebars.templates.list(listContext);
+    var parentBoard = document.querySelector("div[data-bid=" + parent_bid + "]");
+    parentBoard.childNodes[parentBoard.childElementCount].insertAdjacentHTML('beforeend', listHTML);
+    updateBtns();
+    nextLID++;
+}
 
-    board.appendChild(span);
-    board.appendChild(h2);
+/* ***************** */
+/* ----- CARD ------ */
+/* ***************** */
 
-    document.body.appendChild(board);
-    currentBoard = board;
+function submitCard() { // Handles submission from card-adding modal
+    var cid = "cid-" + nextCID;
+    var card_title = document.getElementById("new-card-title").value;
+    var checkboxes = document.querySelectorAll("input[type=checkbox]");
+    selectedCboxes = Array.prototype.slice.call(checkboxes).filter(ch => ch.checked==true);
+    var card_label = {};
+    for (i = 0; i < selectedCboxes.length; i++) {
+        var name = selectedCboxes[i].getAttribute("name")
+        card_label[name] = selectedCboxes[i].value;
+    }
+    var card_content = document.getElementById("new-card-desc").value;
+    var parent_lid = parentList.parentElement.getAttribute("data-lid");
+    addCardModal.style.display = "none";
+    insertCard(cid, card_title, card_label, card_content, parent_lid);
+}
 
-    // add new empty list
+function insertCard(cid, card_title, card_label, card_content, parent_lid) { // Handles insertion of new card into a list
+    var cardContext = {
+        cid: cid,
+        card_title: card_title,
+        card_label: card_label,
+        card_content: card_content
+    }
+    var cardHTML = Handlebars.templates.card(cardContext);
+    var parentList = document.querySelector("div[data-lid=" + parent_lid + "]");
+    parentList.childNodes[3].insertAdjacentHTML('beforeend', cardHTML);
+    updateBtns();
+    nextCID++;
+}
 
-    var list = document.createElement("div");
-    list.classList.add("list-wrapper", "list-add");
+/* ***************** */
+/* ----- LABEL ----- */
+/* ***************** */
 
-    var btn = document.createElement("span");
-    btn.classList.add("add-list-btn", "close");
-    btn.innerHTML = "&plus;";
-    btn.onclick = function() {
-        addListModal.style.display = "block";
-        currentBoard = this.parentElement.parentElement;
+function submitLabel() {
+    var labelId = "labelid-" + nextLabelID;
+    var labelName = document.getElementById("new-label-title").value;
+    labels[labelId] = labelName;
+    var labelContext = {
+        labelid: labelId,
+        label_name: labelName
+    }
+    var labelHTML = Handlebars.templates.label(labelContext);
+    document.getElementsByClassName("add-label-btn")[0].parentElement.insertAdjacentHTML('beforebegin', labelHTML);
+    nextLabelID++;
+    if (Object.keys(labels).length == 6) {
+        document.getElementsByClassName("add-label-btn")[0].parentElement.remove();
+    }
+    addLabelModal.style.display = "none";
+    updateLabels();
+}
+
+function updateLabels() {
+    var context = {
+        labels: labels
+    }
+    var modalLabelsHTML = Handlebars.templates.modalLabels(context);
+    var cardModalLables = document.getElementById("card-modal-labels");
+    while (cardModalLables.firstChild) {
+        cardModalLables.removeChild(cardModalLables.firstChild);
+    }
+    cardModalLables.insertAdjacentHTML('afterbegin', modalLabelsHTML);
+    var listModalLabels = document.getElementById("list-modal-labels");
+    while (listModalLabels.firstChild) {
+        listModalLabels.removeChild(listModalLabels.firstChild);
+    }
+    listModalLabels.insertAdjacentHTML('afterbegin', modalLabelsHTML);
+}
+
+/* ******************** */
+/* ----- BUTTONS ------ */
+/* ******************** */
+
+function updateBtns() {
+    deleteBtns = document.getElementsByClassName("delete");
+    for (i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].onclick = function() {
+            this.parentElement.parentElement.remove();
+        }
+    }
+    addBtns = document.getElementsByClassName("add");
+    for (i = 0; i < addBtns.length; i++) {
+        addBtns[i].onclick = function() {
+            if (this.className.split(' ').includes("add-board-btn")) {
+                addBoardModal.style.display = "block";
+            }
+            else if (this.className.split(' ').includes("add-list-btn")) {
+                addListModal.style.display = "block";
+                parentBoard = this.parentElement.parentElement;
+            }
+            else if (this.className.split(' ').includes("add-card-btn")) {
+                addCardModal.style.display = "block";
+                parentList = this.parentElement;
+            }
+            else if (this.className.split(' ').includes("add-label-btn")) {
+                addLabelModal.style.display = "block";
+            }
+        }
     }
 
-    var header = document.createElement("h3");
-    header.classList.add("list-title");
-    header.innerHTML = "(NEW LIST)";
-
-    list.appendChild(btn);
-    list.appendChild(header);
-    board.appendChild(list);
-
-    addBoardModal.style.display = "none";
-    document.getElementById("new-board-title").value="";
-
 }
-
-// function newList(title)
-// function newListAdd()
-// function newCard(title, desc, date, ...)
-// function newCardAdd()
-// function newBoard(title)
-// function newBoardAdd()
