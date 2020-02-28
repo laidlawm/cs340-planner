@@ -7,7 +7,7 @@
 header {
     text-align: justify;
     letter-spacing: 1px;
-    height: 5em;
+    height: 7em;
     padding: 2em 10%;
     background: #e6e6e6;
     color: #404040;
@@ -61,6 +61,7 @@ header {
 }
 
 .add-card-btn {
+    color: #e6e6e6;
     margin-top: 1.5%;
     margin-left: 30%;
 }
@@ -224,6 +225,19 @@ span, .delete {
   float: left;
   font-size: 28px;
   font-weight: lighter;
+}
+
+.add-card, .add-list, .add-board {
+    background: #404040 !important;
+}
+
+.add-card-btn, .add-list-btn, .add-board-btn {
+    color: #e6e6e6;
+}
+
+.add-card-btn:hover, .add-list-btn:hover, .add-board-btn:hover,
+.add-card-btn:focus, .add-list-btn:focus, .add-board-btn:focus {
+    color: white;
 }
 
 span:hover, .delete:hover, span:focus, .delete:focus {

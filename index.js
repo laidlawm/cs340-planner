@@ -2,6 +2,8 @@
 /* ----- MAIN ------ */
 /* ***************** */
 
+var filtered = 0;
+
 // Register handlebars template functions
 Handlebars.registerPartial("addCardTemplate", "addCardTemplate");
 Handlebars.registerPartial("addLabelTemplate", "addLabelTemplate");
@@ -104,7 +106,6 @@ insertList("lid-1", "DOING", "Label", "bid-0");
 insertList("lid-2", "DONE", "Label", "bid-0");
 insertList("lid-3", "MONDAY", "Label", "bid-1");
 insertList("lid-4", "TUESDAY", "Label", "bid-1");
-insertList("lid-5", "WEDNESDAY", "Label", "bid-1");
 insertCard("cid-0", "Project Step 3 Final ", {"labelid-blank": ""}, "Turn in project step 3 final", "lid-0");
 
 
@@ -216,6 +217,8 @@ function submitLabel() {
     }
     addLabelModal.style.display = "none";
     updateLabels();
+    var newLabel = document.querySelector("[data-labelid=" + labelId + "]");
+    newLabel.onclick = filter;
 }
 
 function updateLabels() {
@@ -233,6 +236,27 @@ function updateLabels() {
         listModalLabels.removeChild(listModalLabels.firstChild);
     }
     listModalLabels.insertAdjacentHTML('afterbegin', modalLabelsHTML);
+}
+
+function filter() {
+    console.log(filtered);
+    if (filtered == 0) {
+        var filterValue = this.getAttribute("data-labelid");
+        // var filteredCards = document.querySelectorAll("[data-labelid=" + filterValue + "]");
+        var hideCards = document.querySelectorAll("[class=card-label]:not([data-labelid=" + filterValue + "])");
+        for (i = 0; i < hideCards.length; i++) {
+            hideCards[i].parentElement.parentElement.style.display = "none";
+        }
+        filtered = 1;
+    }
+    else {
+        var allCards = document.querySelectorAll("[class=card]");
+        console.log("here");
+        for (i = 0; i < allCards.length; i++) {
+            allCards[i].style.display = "block";
+        }
+        filtered = 0;
+    }
 }
 
 /* ******************** */
