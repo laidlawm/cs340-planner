@@ -1,24 +1,278 @@
 * {
-    font-family: sans-serif;
     margin: 0px;
     padding: 0px;
+    font-family: "roboto";
 }
 
 header {
-    display: block;
-    color: white;
-    background-color: gray;
+    text-align: justify;
+    letter-spacing: 1px;
+    height: 7em;
+    padding: 2em 10%;
+    background: #e6e6e6;
+    color: #404040;
+    font-size: 28px;
+    font-weight: lighter;
 }
 
-.lists {
+.site-title {
+    border-bottom: 1px solid #404040;
+}
+
+.board-header {
+    display: inline-block;
+}
+
+.board-content {
+    display: inline-block;
+}
+
+.board {
     display: block;
     margin: auto;
-    background-color: lightgray;
+    white-space: nowrap;
+    overflow-x: scroll;
+    min-height: 100px;
 }
 
-.list-wrapper {
+.list {
     display: inline-block;
     vertical-align: top;
-    background-color: gray;
-    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #e6e6e6;
+    /* min-width: 300px; */
+    /* width: auto; */
+    width: 400px;
+    position: relative;
+}
+
+.list-header {
+    background: #e6e6e6;
+    border-radius: 3px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.add-card {
+    height: 45px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.add-card-btn {
+    color: #e6e6e6;
+    margin-top: 1.5%;
+    margin-left: 30%;
+}
+
+.add-list {
+    display: inline-block;
+    position: relative;
+    top: 16px;
+    left: 0px;
+    width: 120px;
+    height: 45px;
+    border-radius: 5px;
+    background: #e6e6e6;
+}
+
+.add-list-btn {
+    margin-top: 2%;
+    margin-left: 7%;
+}
+
+.board {
+    margin: 5px;
+    min-height: 100px;
+}
+
+.board-header {
+    width: auto;
+    height: 45px;
+    border-radius: 5px;
+    background: #e6e6e6;
+    position: relative;
+    top: 16px;
+}
+
+.board-header .delete, .board-header .board-title {
+    margin: 5px;
+    display: inline-block;
+    color: #404040;
+    font-weight: lighter;
+    font-size: 28px;
+}
+
+.list-header .delete, .list-header .list-title {
+    margin: 5px;
+    display: inline-block;
+    color: #404040;
+    font-weight: lighter;
+    font-size: 28px;
+}
+.list-label {
+    display: inline-block;
+    position: relative;
+    bottom: 4px;
+    color: #e6e6e6;
+    background: #404040;
+    border-radius: 5px;
+}
+
+.card-header {
+    width: auto;
+    height: 45px;
+    border-radius: 2px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: #e6e6e6;
+    /* position: relative; */
+    /* top: 16px; */
+}
+
+.card-header .delete, .card-header .card-title {
+    margin: 5px;
+    display: inline-block;
+    color: #404040;
+    font-weight: lighter;
+    font-size: 28px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-botton: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: auto;
+}
+
+.card-label {
+    display: inline-block;
+    position: relative;
+    bottom: 4px;
+    color: #e6e6e6;
+    background: #404040;
+    border-radius: 5px;
+}
+
+.card-body {
+    display: inline-block;
+    word-break: break-all;
+    width: 100%;
+}
+
+.card-content {
+    width:100%;
+    position: relative;
+    white-space: normal;
+    word-break: normal;
+}
+
+.add-board {
+    display: inline-block;
+    width: 150px;
+    height: 45px;
+    border-radius: 5px;
+    background: #e6e6e6;
+    margin: 5px;
+}
+
+.add-board-btn {
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+/* .list-title {
+    display: inline-block;
+    vertical-align: middle;
+} */
+
+.list-delete {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* #404040 w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+span, .delete {
+  color: #404040;
+  float: left;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+.add-card, .add-list, .add-board {
+    background: #404040 !important;
+}
+
+.add-card-btn, .add-list-btn, .add-board-btn {
+    color: #e6e6e6;
+}
+
+.add-card-btn:hover, .add-list-btn:hover, .add-board-btn:hover,
+.add-card-btn:focus, .add-list-btn:focus, .add-board-btn:focus {
+    color: white;
+}
+
+span:hover, .delete:hover, span:focus, .delete:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-label-btn:hover, .add-label-btn:focus {
+    color: white;
+}
+
+.add-label-btn {
+    color: #e6e6e6;
+}
+
+.add-card {
+    background: #e6e6e6;
+}
+
+#labels-container {
+    list-style-type: none;
+    margin: 5px, 0, 0, 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.label-list-item {
+    color: #e6e6e6;
+    background: #404040;
+    border-radius: 5px;
+    margin: 5px;
+    float: left;
+}
+
+li {
+    list-style: none;
 }

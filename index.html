@@ -4,73 +4,22 @@
         <meta charset="utf-8">
         <title>Planner</title>
         <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+        <script src="public/cardTemplate.js" charset="utf-8" defer></script>
+        <script src="public/listTemplate.js" charset="utf-8" defer></script>
+        <script src="public/boardTemplate.js" charset="utf-8" defer></script>
+        <script src="public/addCardTemplate.js" charset="utf-8" defer></script>
+        <script src="public/addListTemplate.js" charset="utf-8" defer></script>
+        <script src="public/mainTemplate.js" charset="utf-8" defer></script>
+        <script src="public/cardModalTemplate.js" charset="utf-8" defer></script>
+        <script src="public/listModalTemplate.js" charset="utf-8" defer></script>
+        <script src="public/boardModalTemplate.js" charset="utf-8" defer></script>
+        <script src="public/labelTemplate.js" charset="utf-8" defer></script>
+        <script src="public/labelModalTemplate.js" charset="utf-8" defer></script>
+        <script src="public/addLabelTemplate.js" charset="utf-8" defer></script>
+        <script src="public/labelsTemplate.js" charset="utf-8" defer></script>
+        <script src="public/modalLabelsTemplate.js" charset="utf-8" defer></script>
+        <script src="index.js" charset="utf-8" defer></script>
     </head>
-    <body>
-        <header>Planner</header>
-        <div class="lists">
-            <div class="list-wrapper">
-                <h2 class="list-title">TO-DO</h2>
-                <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="list-wrapper">
-                <h2 class="list-title">DOING</h2>
-                <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="list-wrapper">
-                <h2 class="list-title">DONE</h2>
-                <div class="list-body">
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Algorithms Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">Networks Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper">
-                        <h3 class="card-title">SE2 Reading</h3>
-                        <p class="card-content">Read stuff</p>
-                    </div>
-                    <div class="card-wrapper card-add">
-                        <h3 class="card-title"><button>New Card (+)</button></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="list-wrapper list-add">
-                <h2 class="list-title"><button>New List (+)</button></h2>
-            </div>
-        </div>
-    </body>
 </html>
