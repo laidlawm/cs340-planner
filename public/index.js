@@ -1,9 +1,7 @@
 /* ***************** */
 /* ----- MAIN ------ */
 /* ***************** */
-
 var filtered = 0;
-
 // Register handlebars template functions
 Handlebars.registerPartial("addCardTemplate", "addCardTemplate");
 Handlebars.registerPartial("addLabelTemplate", "addLabelTemplate");
