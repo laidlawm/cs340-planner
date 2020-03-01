@@ -9,14 +9,18 @@ var handlebars = require('express-handlebars').create({
 
 app.engine('handlebars', handlebars.engine);
 app.use(bodyParser.urlencoded({extended:true}));
-
-app.use('/', express.static('public'));
-app.use(express.static('views/layouts'));
-app.use(express.static('views/partials'));
-app.use(express.static('dbcon.js'));
+app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
+app.use(express.static('views/layouts'));
+app.use(express.static('views/partials'));
+app.use(express.static('dbcon.js'));
+// app.use('/labels', require('./labels.js'));
+app.use('/planner', require('./planner.js'));
+// app.use('/lists', require('./lists.js'));
+// app.use('/cards', require('./cards.js'));
+app.use('/', express.static('public'));
 
 app.use(function(req,res){
   res.status(404);

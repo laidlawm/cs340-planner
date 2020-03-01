@@ -1,0 +1,14 @@
+{{#each cards}}
+    <div class="card" data-card-id={{card_id}}>
+        <div class="card-header">
+            <span class="delete-card-btn delete" onclick="deleteCard({{card_id}})">&times;</span>
+            <h2 class="card-title">{{card_title}}</h2>
+            <ul class="card-labels">
+                {{#each labels}}<li class="card-label label">{{label_name}}</div>{{/each}}
+            </ul>
+        </div>
+        <div class="card-body">
+            <p class="card-desc">{{card_desc}}</p>
+        </div>
+    </div>
+{{/each}}

@@ -1,0 +1,40 @@
+{{#each boards}}
+    <div class="board" data-board-id={{board_id}}>
+        <div class="board-header">
+            <span class="delete-board-btn delete" onclick="deleteBoard({{board_id}})">&times;</span>
+            <h2 class="board-title">{{board_title}}</h2>
+        </div>
+        <div class="board-body">
+            {{#each lists}}
+                <div class="list" data-list-id={{list_id}}>
+                    <div class="list-header">
+                        <span class="delete-list-btn delete" onclick="deleteList({{list_id}})">&times;</span>
+                        <h2 class="list-title">{{list_title}}</h2>
+                        <ul class="list-labels">
+                            {{#each labels}}<li class="list-label label">{{label_name}}</div>{{/each}}
+                        </ul>
+                    </div>
+                    <div class="list-body">
+                        {{#each cards}}
+                            <div class="card" data-card-id={{card_id}}>
+                                <div class="card-header">
+                                    <span class="delete-card-btn delete" onclick="deleteCard({{card_id}})">&times;</span>
+                                    <h2 class="card-title">{{card_title}}</h2>
+                                    <ul class="card-labels">
+                                        {{#each labels}}<li class="card-label label">{{label_name}}</div>{{/each}}
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-desc">{{card_desc}}</p>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="add-card-btn add" onclick="createCard({{list_id}})">(&plus;) CARD</div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="add-list-btn add" onclick="createList({{board_id}})">(&plus;) LIST</div>
+    </div>
+{{/each}}
+<div class="add-board-btn add" onclick="createBoard()">(&plus;) BOARD</div>

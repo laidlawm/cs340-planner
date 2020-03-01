@@ -1,0 +1,13 @@
+{{#each lists}}
+    <div class="list" data-list-id={{list_id}}>
+        <div class="list-header">
+            <span class="delete-list-btn delete" onclick="deleteList({{list_id}})">&times;</span>
+            <h2 class="list-title">{{list_title}}</h2>
+            <ul class="list-labels">
+                {{#each labels}}<li class="list-label label">{{label_name}}</div>{{/each}}
+            </ul>
+        </div>
+        <div class="list-body" onload="populateList({{list_id}})"></div>
+        <div class="add-card-btn add" onclick="createCard({{list_id}})"></div>
+    </div>
+{{/each}}

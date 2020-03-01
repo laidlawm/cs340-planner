@@ -1,15 +1,13 @@
-<body>
-    <header>
-        <h1 class="site-title">Planner</h1>
-        {{> labels}}
-    </header>
-    <div class="planner">
-        <div class="add-board">
-            <span id="add-board-btn" class="add-board-btn add">(&plus;) BOARD</span>
-        </div>
-    </div>
-</body>
-{{> boardModal}}
-{{> listModal}}
-{{> cardModal}}
-{{> labelModal}}
+<!doctype html>
+<html>
+    <head>
+        <title>Planner</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        {{#each jsscripts}}
+            <script src="/static/{{this}}"></script>
+        {{/each}}
+    </head>
+    <body>
+        {{{body}}}
+    </body>
+</html>
